@@ -58,8 +58,9 @@ def index():
             tfidf_df = pd.DataFrame(tfidf_vector.toarray(), columns=vectorizer.get_feature_names_out())
             tfidf_df = tfidf_df.reindex(columns=selected_features, fill_value=0)
             result = predict_with_ensemble(tfidf_df)
+        return render_template("result.html", result=result)
 
-    return render_template('index.html', result=result)
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
